@@ -85,6 +85,37 @@ export class TodosStore extends EntityStore<TodosState> {
 }
 ```
 
+### Nested Entity Id
+
+`idKey` can only specify a top-level property of an entity.
+In cases an Entity Id is nested in the object, we can use [Store Middlware](../additional/middleware) to populate the `idKey` field.
+
+```ts {3-5} title="todo.model"
+export interface Todo {
+  description: string;
+  nested: {
+    id: number;
+  };
+}
+```
+
+```ts {9-14} title="todos.store.ts"
+export interface TodosState extends EntityState<Todo, number> {}
+
+@StoreConfig({ name: 'todos', idKey: '_id' })
+export class TodosStore extends EntityStore<TodosState> {
+  constructor() {
+    super();
+  }
+  
+  akitaPreAddEntity(newEntity: Todo): Todo & { _id: string; } {
+    return {
+      ...newEntity,
+      _id: newEntity.nested.id,
+    };
+  }
+}
+```
 
 By using this model, you will receive a lot of built-in functionality from Akita:
 
@@ -174,7 +205,7 @@ store.upsert(id, { isOpen: true }, (id, newState) => ({ id, ...newState });
 store.upsert(id, (oldState) => ({ isOpen: !(oldState?.isOpen ?? true) }), (id, newState) => ({ id, ...newState });
 ```
 
-The first argument is the entity to be inserted or updated, the second contains the new entity state, and the last
+The first argument is the entity id to be inserted or updated, the second contains the new entity state, and the last
 argument is the callback for creating a new entity if it does not exist.
 
 :::warning

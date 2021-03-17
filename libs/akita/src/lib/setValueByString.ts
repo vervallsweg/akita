@@ -6,7 +6,7 @@ import { isObject } from './isObject';
  * @example
  * setValue(state, 'todos.ui', { filter: {} })
  */
-export function setValue(obj: any, prop: string, val: any) {
+export function setValue(obj: any, prop: string, val: any, replace = false) {
   const split = prop.split('.');
 
   if (split.length === 1) {
@@ -19,15 +19,12 @@ export function setValue(obj: any, prop: string, val: any) {
   const removeStoreName = prop.split('.').slice(1);
 
   removeStoreName.reduce((acc, part, index) => {
-    if (index === lastIndex) {
-      if (isObject(acc[part])) {
-        acc[part] = { ...acc[part], ...val };
-      } else {
-        acc[part] = val;
-      }
-    } else {
+    if (index !== lastIndex) {
       acc[part] = { ...acc[part] };
+      return acc && acc[part];
     }
+
+    acc[part] = replace || Array.isArray(acc[part]) || !isObject(acc[part]) ? val : { ...acc[part], ...val };
 
     return acc && acc[part];
   }, obj);

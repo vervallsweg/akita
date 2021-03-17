@@ -26,7 +26,6 @@ Akita encourages simplicity. It saves you the hassle of creating boilerplate cod
 - 🚀 See it in action on [StackBlitz](https://stackblitz.com/edit/akita-todos-app)
 - 😎 Use the [CLI](https://github.com/datorama/akita/tree/master/tools/akita-cli)
 - 👉 Checkout the [sample application](http://akita.surge.sh/)
-- 📖 Read the blog [posts](https://netbasal.gitbook.io/akita/general/blog-posts)
 - 🍄 Join Akita's [Gitter](https://gitter.im/akita-state-management/Lobby#) room
 
 ## Contributors
@@ -111,6 +110,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/talohana"><img src="https://avatars2.githubusercontent.com/u/24203431?v=4" width="100px;" alt=""/><br /><sub><b>Tal Ohana</b></sub></a><br /><a href="https://github.com/NetanelBasal/akita/commits?author=talohana" title="Code">💻</a></td>
+    <td align="center"><a href="https://medium.com/@marcinmilewicz"><img src="https://avatars3.githubusercontent.com/u/40635984?v=4" width="100px;" alt=""/><br /><sub><b>Marcin Milewicz</b></sub></a><br /><a href="https://github.com/NetanelBasal/akita/commits?author=marcinmilewicz" title="Code">💻</a></td>
   </tr>
 </table>
 
